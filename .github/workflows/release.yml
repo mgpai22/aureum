@@ -169,6 +169,8 @@ jobs:
             --draft \
             --notes-file release-notes.txt \
             --title "Aureum ${tag}" \
-            ./dist/aureum_${tag#v}_*
+            dist/aureum_${tag#v}_linux_amd64.tar.gz \
+            dist/aureum_${tag#v}_darwin_amd64.tar.gz \
+            dist/aureum_${tag#v}_windows_amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
