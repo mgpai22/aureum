@@ -126,9 +126,10 @@ jobs:
 
       - name: Test (Windows)
         if: matrix.os == 'windows-latest'
+        shell: pwsh
         run: |
-          unzip dist/aureum_${{ needs.pre_release.outputs.VERSION }}_windows_amd64.zip
-          test -f dist/aureum-windows-amd64.exe
+          Expand-Archive -Force dist/aureum_${{ needs.pre_release.outputs.VERSION }}_windows_amd64.zip
+          if (!(Test-Path dist/aureum-windows-amd64.exe)) { exit 1 }
 
   release:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
