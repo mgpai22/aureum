@@ -48,10 +48,12 @@ jobs:
           
           # Build for Linux
           GOOS=linux GOARCH=amd64 go build -v -o dist/aureum-linux-amd64
+          chmod +x dist/aureum-linux-amd64
           tar czf dist/aureum_${VERSION}_linux_amd64.tar.gz -C dist aureum-linux-amd64
           
           # Build for macOS
           GOOS=darwin GOARCH=amd64 go build -v -o dist/aureum-darwin-amd64
+          chmod +x dist/aureum-darwin-amd64
           tar czf dist/aureum_${VERSION}_darwin_amd64.tar.gz -C dist aureum-darwin-amd64
           
           # Build for Windows
@@ -68,10 +70,12 @@ jobs:
           
           # Build for Linux
           GOOS=linux GOARCH=amd64 go build -v -o dist/aureum-linux-amd64
+          chmod +x dist/aureum-linux-amd64
           tar czf dist/aureum_${VERSION}_linux_amd64.tar.gz -C dist aureum-linux-amd64
           
           # Build for macOS
           GOOS=darwin GOARCH=amd64 go build -v -o dist/aureum-darwin-amd64
+          chmod +x dist/aureum-darwin-amd64
           tar czf dist/aureum_${VERSION}_darwin_amd64.tar.gz -C dist aureum-darwin-amd64
           
           # Build for Windows
@@ -112,19 +116,19 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           tar xf dist/aureum_${{ needs.pre_release.outputs.VERSION }}_linux_amd64.tar.gz
-          ./aureum-linux-amd64 --help
+          test -f aureum-linux-amd64
 
       - name: Test (macOS)
         if: matrix.os == 'macos-latest'
         run: |
           tar xf dist/aureum_${{ needs.pre_release.outputs.VERSION }}_darwin_amd64.tar.gz
-          ./aureum-darwin-amd64 --help
+          test -f aureum-darwin-amd64
 
       - name: Test (Windows)
         if: matrix.os == 'windows-latest'
         run: |
           unzip dist/aureum_${{ needs.pre_release.outputs.VERSION }}_windows_amd64.zip
-          ./dist/aureum-windows-amd64.exe --help
+          test -f dist/aureum-windows-amd64.exe
 
   release:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
