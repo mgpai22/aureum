@@ -1,5 +1,5 @@
-github.com/Salvionied/apollo v1.0.12 h1:kC12bSqOQX7cZjKh9D4vqBX/VH9jZd9z+hPXdLZTalg=
-github.com/Salvionied/apollo v1.0.12/go.mod h1:BLs3iWs5ovGcVqFvpuX3g0RmLB9QIYMwFgzcN9rhkGA=
+github.com/Salvionied/apollo v1.0.13-0.20240903181311-403bc11dc35a h1:vQ4OL+DeFxtaXCEck16+E4V3lFQvVAI63hOSqXYsaas=
+github.com/Salvionied/apollo v1.0.13-0.20240903181311-403bc11dc35a/go.mod h1:lOk22W7FRdqg107bHMo8K68P0WIoDejbd9TQpXRLI20=
 github.com/Salvionied/cbor/v2 v2.6.0 h1:OEwlZLiodLdNeM9wFoSydLvj6/rHRaxu5G8VzwXSeuY=
 github.com/Salvionied/cbor/v2 v2.6.0/go.mod h1:oFxaUo/mQ5sG1k459nzctGdYa80jy0ZqZ9pln9C/fGw=
 github.com/tetratelabs/wazero v1.8.2 h1:yIgLR/b2bN31bjxwXHD8a3d+BogigR952csSDdLYEv4=

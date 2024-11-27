@@ -63,8 +63,8 @@ func prepareUTxO(apolloUTxO *apolloUTxO.UTxO, assetMap map[string]uint64) (UTxO,
 	}
 
 	var scriptRef *ScriptRef
-	if ref := apolloUTxO.Output.GetScriptRef(); ref != nil && ref.Script.Script != nil {
-		scriptBytes := ref.Script.Script
+	if ref := apolloUTxO.Output.GetScriptRef(); ref != nil {
+		scriptBytes := []byte(*ref)
 		if len(scriptBytes) > 0 {
 			scriptRef = &ScriptRef{
 				ScriptType: "plutus_v2",
@@ -196,6 +196,9 @@ func convertJSONOutputToUTxO(output OutputJSON, input TransactionInput.Transacti
 	var txOut TransactionOutput.TransactionOutput
 	if output.InlineDatum != "" {
 		txOut, err = createAlonzoOutput(addr, lovelaceAmount, multiAssets, output.InlineDatum)
+		if err != nil {
+			return apolloUTxO.UTxO{}, fmt.Errorf("failed to create Alonzo output: %w", err)
+		}
 	} else {
 		txOut = createShelleyOutput(addr, lovelaceAmount, multiAssets, output.DataHash)
 	}

@@ -4,7 +4,7 @@ module github.com/mgpai22/aureum
 go 1.21
 
 require (
-	github.com/Salvionied/apollo v1.0.12
+	github.com/Salvionied/apollo v1.0.13-0.20240903181311-403bc11dc35a
 	github.com/Salvionied/cbor/v2 v2.6.0
 	github.com/tetratelabs/wazero v1.8.2
 )
