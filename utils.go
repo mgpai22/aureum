@@ -131,7 +131,10 @@ func GetUtxosFromTx(ctx context.Context, txBytes []byte, chainContext base.Chain
 	// Process each input in the transaction
 	for _, input := range tx.TransactionBody.Inputs {
 		txHash := hex.EncodeToString(input.TransactionId)
-		utxo := chainContext.GetUtxoFromRef(txHash, int(input.Index))
+		utxo, err := chainContext.GetUtxoFromRef(txHash, int(input.Index))
+		if err != nil {
+			return nil, err
+		}
 		if utxo == nil {
 			return nil, fmt.Errorf("UTxO not found for input %s#%d", txHash, input.Index)
 		}
