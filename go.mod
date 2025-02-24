@@ -2,11 +2,12 @@ module github.com/mgpai22/aureum
 
 // Floor Go version of aureum (current - 2)
 go 1.21
+toolchain go1.22.5
 
 require (
 	github.com/Salvionied/apollo v1.0.12
 	github.com/Salvionied/cbor/v2 v2.6.0
-	github.com/tetratelabs/wazero v1.8.2
+	github.com/tetratelabs/wazero v1.9.0
 )
 
 require (
